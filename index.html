@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iXBRL Viewer Example (Arelle Open Source)</title>
+    <!-- CSS style for a basic viewer layout -->
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
+            overflow: hidden; /* Important for viewer to handle its own scrolling */
+        }
+        #ixv {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- This div is where the ixbrl-viewer mounts -->
+    <div id="ixv">
+        <div class="ixv-loading-message" style="display: flex; justify-content: center; align-items: center; height: 100%; font-size: 1.5em; color: #555;">
+            Cargando visor iXBRL...
+        </div>
+    </div>
+
+    <!-- The viewer javascript from Arelle / Workiva -->
+    <script src="https://cdn.jsdelivr.net/npm/ixbrl-viewer@1.4.91/iXBRLViewerPlugin/viewer/dist/ixbrlviewer.js"></script>
+
+    <!-- Initialization of the viewer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for the script to load and initialize it.
+            // Normally, Arelle injects a huge block of JSON data directly.
+            // When using the "stub viewer mode", we load the original iXBRL
+            // and the JSON data.
+
+            // Note: Since this is a raw sample.html without the compiled JSON from Arelle,
+            // opening it in the viewer directly requires a specific data structure.
+            // For this demo, we simply redirect to the sample HTML itself which
+            // we will modify (or just show it directly if it already has the viewer script).
+
+            // To simulate the real flow, the 'sample.html' we are downloading
+            // is actually a full iXBRL file. But to work in the viewer interactively,
+            // Arelle needs to process it.
+
+            // Since we downloaded a pre-processed sample in step 2 (gleif), we will just
+            // redirect the user to it or load it in an iframe.
+
+            // Let's actually redirect to the downloaded sample that has everything embedded.
+            window.location.href = "sample.html";
+        });
+    </script>
+</body>
+</html>
