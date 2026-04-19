@@ -7,6 +7,7 @@ Este repositorio contiene un entorno de prueba para visualizar archivos iXBRL (c
 Para lograr el "efecto Workiva" a partir de un archivo crudo de Altova, se requieren tres pasos:
 
 1. **Generación (Altova / Sistema Contable):** Se genera un archivo iXBRL crudo. Este archivo es un documento HTML estándar pero contiene las etiquetas financieras ocultas (Inline XBRL).
+   > **Nota importante para Altova:** Debes exportar el archivo como *Inline XBRL*. Si exportas como XML/XBRL estándar (.xbrl) o HTML estándar (.html sin etiquetas `ix:`), Arelle no podrá generar el visor interactivo.
 2. **Procesamiento (Arelle):** El visor no puede leer directamente el HTML en tiempo real; requiere "preparación". Arelle toma tu iXBRL crudo, valida la taxonomía, extrae la estructura contable y compila un paquete de datos JSON. Arelle luego incrusta este JSON y un enlace al código JavaScript del visor (`ixbrlviewer.js`) en el archivo.
 3. **Visualización:** Al abrir el archivo procesado por Arelle en un navegador, el JavaScript del visor lee el JSON incrustado y dibuja el panel interactivo, permitiendo al usuario hacer clic en los números y ver los detalles contables.
 
@@ -31,9 +32,20 @@ En este repositorio hemos descargado un archivo de ejemplo (`sample.html`) que *
    [http://localhost:8000/index.html](http://localhost:8000/index.html)
    *(O directamente a http://localhost:8000/sample.html para ver el archivo de ejemplo).*
 
+## Preparar archivos propios
+
+Para preparar un archivo de Inline XBRL (por ejemplo, `DaviviendaSociedad.html`) generado correctamente desde Altova:
+
+1. Ejecuta el script de procesamiento:
+   ```bash
+   ./process_ixbrl.sh
+   ```
+   *(Este script invoca a `arelleCmdLine` con el plugin `ixbrl-viewer` para compilar el JSON y generar el visor final en `DaviviendaSociedad_viewer.html`)*
+
 ## Dependencias
 
 El visor interactivo cargado en el archivo `index.html` (y en los archivos procesados por Arelle) es un proyecto de código abierto mantenido por Arelle (originalmente donado por Workiva). En este ejemplo, se está cargando a través del CDN: `https://cdn.jsdelivr.net/npm/ixbrl-viewer@1.4.91/iXBRLViewerPlugin/viewer/dist/ixbrlviewer.js`.
+
 ## Resultado
 A continuación se muestra una captura de pantalla del visor iXBRL cargando correctamente el archivo procesado por Arelle:
 
