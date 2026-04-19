@@ -34,3 +34,7 @@ En este repositorio hemos descargado un archivo de ejemplo (`sample.html`) que *
 ## Dependencias
 
 El visor interactivo cargado en el archivo `index.html` (y en los archivos procesados por Arelle) es un proyecto de código abierto mantenido por Arelle (originalmente donado por Workiva). En este ejemplo, se está cargando a través del CDN: `https://cdn.jsdelivr.net/npm/ixbrl-viewer@1.4.91/iXBRLViewerPlugin/viewer/dist/ixbrlviewer.js`.
+## Resultado
+A continuación se muestra una captura de pantalla del visor iXBRL cargando correctamente el archivo procesado por Arelle:
+
+![Visor iXBRL](./screenshot_viewer.png)
